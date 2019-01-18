@@ -1621,6 +1621,14 @@
         <param index="1">Target tag to jump to.</param>
         <param index="2">Repeat count</param>
       </entry>
+
+      <entry value="1000" name="MAV_CMD_REQUEST_PACKED_PARAMS">
+        <wip/>
+        <!-- This message is work-in-progress and it can therefore change. It should NOT be used in stable production environments. -->
+        <description></description>
+
+      </entry>
+
       <entry value="2000" name="MAV_CMD_IMAGE_START_CAPTURE">
         <description>Start image capture sequence. Sends CAMERA_IMAGE_CAPTURED after each capture. Use NaN for reserved values.</description>
         <param index="1">Reserved (Set to 0)</param>
@@ -5054,6 +5062,19 @@
       <field type="uint8_t" name="severity" enum="MAV_SEVERITY">Severity of status. Relies on the definitions within RFC-5424.</field>
       <field type="char[254]" name="text">Status text message, without null termination character.</field>
     </message>
+
+
+    <message id="500" name="PACKED_PARAM_VALUES">
+      <wip/>
+      <!-- This message is work-in-progress it can therefore change, and should NOT be used in stable production environments -->
+      <description>Packed parameters</description>
+      <field type="uint8_t" name="number">Number of packed parameters contained in this message</field>
+      <field type="uint8_t" name="total_size" units="Bytes">Total size of the message</field>
+      <field type="uint16_t" name="parameter_group_id">ID of the parameter group these belong to. Set to 0 if none.</field>
+      <field type="uint8_t[251]" name="buffer">Buffer of packed parameters</field>
+    </message>
+
+
     <!-- Rover specific messages -->
     <message id="9000" name="WHEEL_DISTANCE">
       <description>Cumulative distance traveled for each reported wheel.</description>
